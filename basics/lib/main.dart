@@ -7,6 +7,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext ontext) {
+    void answerQuestion() => print('Answer chosen');
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -16,16 +18,16 @@ class MyApp extends StatelessWidget {
           children: [
             Text("this is my default text"),
             ElevatedButton(
-              onPressed: null,
+              onPressed: answerQuestion,
               child: Text("Answer 1"),
             ),
             RaisedButton(
               child: Text("Answer 2"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
             RaisedButton(
               child: Text("Answer 3"),
-              onPressed: null,
+              onPressed: answerQuestion,
             ),
           ],
         ),
