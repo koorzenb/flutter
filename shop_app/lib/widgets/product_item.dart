@@ -16,8 +16,10 @@ class ProductItem extends StatelessWidget {
       child: GridTile(
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context)
-                .pushNamed(ProductDetailScreen.routeName, arguments: id);
+            Navigator.of(context).pushNamed(
+              ProductDetailScreen.routeName,
+              arguments: id,
+            );
           },
           child: Image.network(
             imageUrl,
@@ -28,7 +30,7 @@ class ProductItem extends StatelessWidget {
           backgroundColor: Colors.black87,
           leading: IconButton(
             icon: Icon(Icons.favorite),
-            color: Theme.of(context).colorScheme.secondary,
+            color: Theme.of(context).accentColor,
             onPressed: () {},
           ),
           title: Text(
@@ -36,9 +38,11 @@ class ProductItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-            icon: Icon(Icons.shopping_cart),
-            color: Theme.of(context).colorScheme.secondary,
+            icon: Icon(
+              Icons.shopping_cart,
+            ),
             onPressed: () {},
+            color: Theme.of(context).accentColor,
           ),
         ),
       ),
