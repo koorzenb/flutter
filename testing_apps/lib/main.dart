@@ -1,68 +1,43 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(MyApp(
+    items: List<String>.generate(10000, (i) => 'Item $i'),
+  ));
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final List<String> items;
+
+  const MyApp({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Counter App',
-      home: MyHomePage(title: 'Counter App Home Page'),
-    );
-  }
-}
+    const title = 'Long List';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              // Provide a Key to this specific Text widget. This allows
-              // identifying the widget from inside the test suite,
-              // and reading the text.
-              key: const Key('counter'),
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+    return MaterialApp(
+      title: title,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(title),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        // Provide a Key to this button. This allows finding this
-        // specific button inside the test suite, and tapping it.
-        key: const Key('increment'),
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        body: ListView.builder(
+          // Add a key to the ListView. This makes it possible to
+          // find the list and scroll through it in the tests.
+          key: const Key('long_list'),
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(
+                items[index],
+                // Add a key to the Text widget for each item. This makes
+                // it possible to look for a particular item in the list
+                // and verify that the text is correct
+                key: Key('item_${index}_text'),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

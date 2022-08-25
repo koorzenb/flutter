@@ -4,6 +4,10 @@ import 'package:integration_test/integration_test.dart';
 
 import 'package:testing_apps/main.dart';
 
+/**
+ * Run with: flutter drive --driver=test_driver/perf_driver.dart --target=integration_test/app_test.dart --profile --no-dds
+ */
+
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
