@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    MyApp(
-      items: List<String>.generate(10000, (i) => 'Item $i'),
-    ),
-  );
+  runApp(MyApp(
+    items: List<String>.generate(10000, (i) => 'Item $i'),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -24,13 +22,19 @@ class MyApp extends StatelessWidget {
           title: const Text(title),
         ),
         body: ListView.builder(
+          // Add a key to the ListView. This makes it possible to
+          // find the list and scroll through it in the tests.
+          key: const Key('long_list'),
           itemCount: items.length,
-          prototypeItem: ListTile(
-            title: Text(items.first),
-          ),
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(items[index]),
+              title: Text(
+                items[index],
+                // Add a key to the Text widget for each item. This makes
+                // it possible to look for a particular item in the list
+                // and verify that the text is correct
+                key: Key('item_${index}_text'),
+              ),
             );
           },
         ),

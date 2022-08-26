@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
 
-import 'package:testing_apps/main.dart';
+import 'package:testing_apps/long_list.dart';
 
 /**
  * Run with: flutter drive --driver=test_driver/perf_driver.dart --target=integration_test/app_test.dart --profile --no-dds
