@@ -1,4 +1,4 @@
-import 'package:testing_apps/counter.dart';
+import '../lib/counter.dart';
 import 'package:test/test.dart';
 
 void main() {
